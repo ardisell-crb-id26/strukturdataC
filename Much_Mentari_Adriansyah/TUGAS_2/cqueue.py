@@ -5,7 +5,7 @@ st.title("🏥 Antrian Pasien (Circular Queue)")
 st.caption("FIFO + wrap-around (melingkar)")
 
 # === KAPASITAS ===
-capacity = st.slider("Kapasitas", 3, 8, 5)
+capacity = st.slider("Kapasitas", 3, 11, 5)
 
 # === INISIALISASI STATE ===
 if 'queue' not in st.session_state:
@@ -102,14 +102,22 @@ with col1:
     if st.button("➕ Tambah"):
         if nama:
             ok, msg = enqueue(nama)
-            st.sidebar.success(msg) if ok else st.sidebar.error(msg)
+            if ok:
+                st.sidebar.success(msg)
+            else:
+                st.sidebar.error(msg)
+            st.rerun()
         else:
             st.sidebar.warning("Isi nama dulu!")
 
 with col2:
-    if st.button("❌ Hapus"):
+    if st.button("👨‍⚕️ Layani"):
         ok, msg = dequeue()
-        st.sidebar.success(msg) if ok else st.sidebar.warning(msg)
+        if ok:
+            st.sidebar.success(msg)
+        else:
+            st.sidebar.warning(msg)
+        st.rerun()
 
 if st.sidebar.button("🔄 Reset"):
     reset()

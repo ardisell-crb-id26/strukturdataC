@@ -144,11 +144,11 @@ for i in range(capacity):
     val = st.session_state.queue[i]
     tanda = ""
     if i == st.session_state.front and i == st.session_state.rear:
-        tanda = " 🔄 FRONT & REAR"
+        tanda = " 🔄 DEPAN & BELAKANG"
     elif i == st.session_state.front:
-        tanda = " 🔴 FRONT"
+        tanda = " 🔴 DEPAN"
     elif i == st.session_state.rear:
-        tanda = " 🔵 REAR"
+        tanda = " 🔵 BELAKANG"
     
     if val is None:
         st.text(f"[{i}] : (kosong){tanda}")
